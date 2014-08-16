@@ -81,3 +81,9 @@ SOCIAL_AUTH_PIPELINE = (
         )
 
 EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
+
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    'social.apps.django_app.context_processors.backends',
+    )

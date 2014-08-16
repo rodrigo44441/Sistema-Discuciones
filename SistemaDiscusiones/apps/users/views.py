@@ -52,10 +52,20 @@ def send_email(request):
 
 class UserDetailView(DetailView):
 	model = User
+	context_object_name = 'user'
+	slug_field = 'username'
 
 	def get_context_data(self, **kwargs):
 		context = super(UserDetailView, self).get_context_data(**kwargs)
 		questions = Question.objects.filter(user = context['object']).order_by('created')
 		tags = [question.tag.all() for question in questions ]
-		context['ques_tag'] = zip(questions, tags)
+		context['ques_tags'] = zip(questions, tags)
+
+		facebook = context['object'].social_auth.filter(provider='facebook')
+		if facebook:
+			context['facebook'] = facebook[0].extra_data['id']
+
+		twitter = context['object'].social_auth.filter(provider='twitter')
+		if twitter:
+			context['twitter'] = twitter[0].extra_data['access_token']['screen_name']
 		return context

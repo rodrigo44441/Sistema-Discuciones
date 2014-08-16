@@ -7,15 +7,19 @@
                 <div class="col-sm-6 col-md-4">
                 <br>
                         <div class="thumbnail">
-                              <img src="{{ object.avatar }}" data-src="holder.js/300x200" alt="...">
+                              <img src="{{ user.avatar }}" data-src="holder.js/300x200" alt="...">
                               <div class="caption">
-                                <h3>{{ object.username }}</h3>
-                                <p><b>Nombre:</b> {{ object.first_name }} {{ object.last_name }}</p>
+                                <h3>{{ user.username }}</h3>
+                                <p><b>Nombre:</b> {{ user.first_name }} {{ user.last_name }}</p>
                                 <p><b>Descripci��n:</b> Desarrollador Web orientado al FrotEnd, dominando tecnolog��as como JQuery, JavaScript, HTML5, CSS3, Responsive Web Design, y un poco de Backbone.js.</p>
                                 <p><b>Redes Sociales:</b></p>
                                 <p>
-                                        <a href="#" class="btn btn-primary" role="button"><span class="icon-facebook"></span>Facebook</a> 
-                                        <a href="#" class="btn btn-primary" role="button"><span class="icon-twitter"></span>Twitter</a>
+                                  {% if facebook %}
+                                        <a href="http://fb.com/{{ facebook }}" class="btn btn-primary" role="button"><span class="icon-facebook"></span>Facebook</a> 
+                                  {% endif %}
+                                  {% if twitter %}      
+                                        <a href="http://twitter.com/{{ twitter }}" class="btn btn-primary" role="button"><span class="icon-twitter"></span>Twitter</a>
+                                  {% endif %}      
                                 </p>
                               </div>
                             </div>

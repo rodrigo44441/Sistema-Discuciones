@@ -14,7 +14,7 @@
     <li class="dropdown">
       <a href="#" class="dropdown-toogle" data-toogle="dropdown">{{ user.username }} <b class="caret"></b></a>
       <ul class="nav navbar-nav navbar-rigth">
-        <li> <a href="{% url 'users:user_detail' user.id %}">Perfil</a> </li>
+        <li> <a href="{% url 'users:user_detail' user.username %}">Perfil</a> </li>
         <li class="divider"></li>
         <li> <a href="{% url 'users:logout' %}"> Salir<span class="glyphicon glyphicon-log-out"></span> </a> </li>
       </ul>
@@ -38,11 +38,29 @@
                                 </div>
                         </div>
                         <div class="col-md-4 login">
+                              {% if user.is_authenticated %}
+                              <h3>Asocia tu Cuenta</h3>
+                              {% ifequal backends.not_associated 'facebook' %}
+                                <p>
+                                  <a href="{% url 'social:begin' 'twitter' %}" type="button" class="btn btn-primary btn-lg btn-lg-customize-tw"><span class="icon-twitter"></span>Twitter</a>
+                                </p>
+      
+                              {% else %}
+                              
+                              <p>
+                                  <a href="{% url 'social:begin' 'facebook' %}" type="button" class="btn btn-primary btn-lg btn-lg-customize-fb"><span class="icon-facebook"></span>Facebook</a>
+                              </p>
+                              {% endifequal %}
+
+                              {% else %}
                                 <h3>Conectate con:</h3>
                                 <p>
                                   <a href="{% url 'social:begin' 'facebook' %}" type="button" class="btn btn-primary btn-lg btn-lg-customize-fb"><span class="icon-facebook"></span>Facebook</a>
                                   <a href="{% url 'social:begin' 'twitter' %}" type="button" class="btn btn-primary btn-lg btn-lg-customize-tw"><span class="icon-twitter"></span>Twitter</a>
                                 </p>
+
+                              {% endif %}
+
                         </div>
                 </div>
 
