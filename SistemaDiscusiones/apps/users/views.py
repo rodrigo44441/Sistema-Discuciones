@@ -69,3 +69,4 @@ class UserDetailView(DetailView):
 		if twitter:
 			context['twitter'] = twitter[0].extra_data['access_token']['screen_name']
 		return context
+

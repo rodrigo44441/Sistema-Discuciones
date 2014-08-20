@@ -10,6 +10,7 @@ urlpatterns = patterns('',
 
     url(r'^', include('apps.home.urls')),
     url(r'^', include('apps.users.urls', namespace = 'users')),
+    url(r'^', include('apps.discuss.urls', namespace = 'discuss')),
 
     #PYTHON SOCIAL AUTH
     url('', include('social.apps.django_app.urls', namespace = 'social')),
