@@ -21,7 +21,7 @@
 					
 					{% for question in questions %}
 					
-					<h4><a href="">{{question.title}}</a> <small>{{question.user}}</small><span><img src="{{question.user.avatar}}" class="foto-perfil"></span></h4>
+					<h4><a href="/pregunta/{{ question.slug }}">{{ question.title }}</a> <small>{{question.user}}</small><span><img src="{{question.user.avatar}}" class="foto-perfil"></span></h4>
 					<blockquote class="bloquesito">
 					  <p class="bg-info bg-info-customize">Vistos <span>0</span></p>
 					  <p class="bg-warning bg-info-customize">Respuestas <span>0</span></p>
@@ -120,3 +120,4 @@
 		}
 	</script>	
 {% endblock %} #}
+
