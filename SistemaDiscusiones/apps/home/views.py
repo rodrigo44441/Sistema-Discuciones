@@ -7,7 +7,7 @@ from apps.users.models import User
 
 class IndexView(ListView):
 	template_name = 'home/index.html'
-	queryset = Question.objects.all()[:10]
+	queryset = Question.objects.all()[:5]
 
 	def get_queryset(self):
 		tags = [ question.tag.all() for question in self.queryset]
